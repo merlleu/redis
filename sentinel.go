@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/merlleu/redis/v7/internal"
-	"github.com/merlleu/redis/v7/internal/pool"
+	"github.com/merlleu/redis-go-setne/v7/internal"
+	"github.com/merlleu/redis-go-setne/v7/internal/pool"
 )
 
 //------------------------------------------------------------------------------

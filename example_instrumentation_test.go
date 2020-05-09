@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/merlleu/redis/v7"
+	"github.com/merlleu/redis-go-setne/v7"
 )
 
 type redisHook struct{}

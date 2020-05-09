@@ -1,4 +1,4 @@
-module github.com/merlleu/redis/v7
+module github.com/merlleu/redis-go-setne/v7
 
 require (
 	github.com/golang/protobuf v1.3.2 // indirect

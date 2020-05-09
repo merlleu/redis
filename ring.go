@@ -10,10 +10,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/merlleu/redis/v7/internal"
-	"github.com/merlleu/redis/v7/internal/consistenthash"
-	"github.com/merlleu/redis/v7/internal/hashtag"
-	"github.com/merlleu/redis/v7/internal/pool"
+	"github.com/merlleu/redis-go-setne/v7/internal"
+	"github.com/merlleu/redis-go-setne/v7/internal/consistenthash"
+	"github.com/merlleu/redis-go-setne/v7/internal/hashtag"
+	"github.com/merlleu/redis-go-setne/v7/internal/pool"
 )
 
 // Hash is type of hash function used in consistent hash.

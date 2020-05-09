@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/merlleu/redis/v7"
+	"github.com/merlleu/redis-go-setne/v7"
 )
 
 var rdb *redis.Client
