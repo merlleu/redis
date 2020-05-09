@@ -118,6 +118,7 @@ type Cmdable interface {
 	Set(key string, value interface{}, expiration time.Duration) *StatusCmd
 	SetBit(key string, offset int64, value int) *IntCmd
 	SetNX(key string, value interface{}, expiration time.Duration) *BoolCmd
+	SetNE(key string, value interface{}, expiration time.Duration) *BoolCmd
 	SetXX(key string, value interface{}, expiration time.Duration) *BoolCmd
 	SetRange(key string, offset int64, value string) *IntCmd
 	StrLen(key string) *IntCmd
@@ -872,6 +873,21 @@ func (c cmdable) SetNX(key string, value interface{}, expiration time.Duration) 
 	if expiration == 0 {
 		// Use old `SETNX` to support old Redis versions.
 		cmd = NewBoolCmd("setnx", key, value)
+	} else {
+		if usePrecise(expiration) {
+			cmd = NewBoolCmd("set", key, value, "px", formatMs(expiration), "nx")
+		} else {
+			cmd = NewBoolCmd("set", key, value, "ex", formatSec(expiration), "nx")
+		}
+	}
+	_ = c(cmd)
+	return cmd
+}
+
+func (c cmdable) SetNE(key string, value interface{}, expiration time.Duration) *BoolCmd {
+	var cmd *BoolCmd
+	if expiration == 0 {
+		cmd = NewBoolCmd("setne", key, value)
 	} else {
 		if usePrecise(expiration) {
 			cmd = NewBoolCmd("set", key, value, "px", formatMs(expiration), "nx")
